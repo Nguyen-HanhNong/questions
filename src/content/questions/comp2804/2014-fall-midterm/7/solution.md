@@ -1,11 +1,11 @@
 ${(5x-36)}^{100}$
 
-$=\sum^{100}_{k=0} \binom{100}{k}{(5x)}^k {(-3y)}^{n-k}$
+$ = \sum^{100}\_{k=0} \binom{100}{k} {(5x)}^{n-k} {(-3y)}^{k} $
 
-$=\binom{100}{20}{(5x)}^{20} {(-3y)}^{80}$
+We only consider $k=80$, as it results in $y^{80}$.
 
-$=\binom{100}{20}5^{20} 3^{80} x^{20} y^{80}$
+$ = \binom{100}{80} \cdot {(5x)}^{100-80} \cdot {(-3y)}^{80} $
 
-$=\binom{100}{80}5^{20} 3^{80} x^{20} y^{80}$
+$ = \binom{100}{80} \cdot 5^{20} \cdot {(-3)}^{80} \cdot x^{20} \cdot y^{80} $
 
-$=\binom{100}{80}5^{20} 3^{80}$ (this is the coefficient)
+$ = \binom{100}{80} \cdot 5^{20} \cdot 3^{80} $ (final answer, i.e. the coefficient of $x^{20} y^{80}$)
