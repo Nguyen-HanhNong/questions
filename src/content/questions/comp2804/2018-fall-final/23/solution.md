@@ -1,28 +1,32 @@
-Alright. So let's just linear algebra the hell outta this question
+## **How does Linearity of Expectation apply to the question?**
 
-Let $X_i$ be 1 if the student gets the question right and -z if the student gets the question wrong
+1. Jim answers **25 questions** randomly.
+2. For each question:
 
-<ul>
-    <li> $X_i = 1$ if the student gets the question right <br/> 
-    $ Pr(X_i = 1) = \frac{1}{4} $
-    <li> $X_i = -z$ if the student gets the question wrong <br/> 
-    $ Pr(X_i = -z) = \frac{3}{4} $
-</ul>
+   - With probability $P(\text{correct}) = \frac{1}{4}$, Jim gets **+1** mark.
+   - With probability $P(\text{incorrect}) = \frac{3}{4}$, Jim loses $-z$ marks.
 
-$ 0 = \sum\_{k=1}^{25} ( 1 \cdot Pr(X_i = 1) ) + \sum\_{k=1}^{25} ( -z \cdot Pr(X_i = -z) ) $
+Let $X_i$ represent the score Jim receives for the **i-th question**. Let $X$ represent Jim's total score.
+We can represent his final total score as: $X = \sum_{i=1}^{25} X_i$. The expected value of Jim's total score is: $E(X) = E(\sum_{i=1}^{25} X_i)$.
 
-$ 0 = \sum\_{k=1}^{25} ( 1 \cdot \frac{1}{4} ) + \sum\_{k=1}^{25} ( -z \cdot \frac{3}{4} ) $
+We can use linearity of expectation to simplify the expression above. Using **linearity of expectation**: $E(X) = E(\sum_{i=1}^{25} X_i) = \sum_{i=1}^{25} E(X_i)$. Now, all we have to do is calculate $E(X_i)$ instead of calculating the expected value of the entire summation itself.
 
-$ 0 = 25 \cdot ( 1 \cdot \frac{1}{4} ) + 25(-z \cdot \frac{3}{4}) $
+We can simplify the above expression even further. Since every question is identical and independent: $E(X) = 25 \cdot E(X_i)$ For the total expected value to be **0**, we need to find the $z$ value where: $E(X_i) = 0$
 
-$ 0 = 25 \cdot \frac{1}{4} - 25z \cdot \frac{3}{4} $
+---
 
-$ 0 = \frac{25}{4} - \frac{75z}{4} $
+## **Calculate the Expected Value**
 
-$ 0 = 25 - 75z $
+Using the definition of expected value: $E(X_i) = (1) \cdot P(\text{correct}) + (-z) \cdot P(\text{incorrect})$
 
-$ 75z = 25 $
+Substituting the probabilities: $E(X_i) = (1) \cdot \frac{1}{4} + (-z) \cdot \frac{3}{4}$
 
-$ z = \frac{25}{75} $
+Simplify: $E(X_i) = \frac{1}{4} - \frac{3z}{4}$
 
-$ z = \frac{1}{3} $
+Set $E(X_i) = 0$: $\frac{1}{4} - \frac{3z}{4} = 0$
+
+Rearrange the equation: $\frac{1}{4} = \frac{3z}{4}$
+
+Cancel the common factor of $\frac{1}{4}$ by multiplying both sides by $4$: $1 = 3z$
+
+Solve for the unknown variable $z$: $z = \frac{1}{3}$

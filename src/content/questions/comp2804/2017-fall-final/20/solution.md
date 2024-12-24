@@ -1,22 +1,43 @@
-Let's explain why some are wrong and one is right
+## Goal of Problem
 
-<ul>
-    <li> ${\sum_{k=1}^{100}} k \cdot \frac{k^{2}}{100^{2}}$ <br/> 
-    This equation says, \enquote{The probability that k is the max value and each value has 1 to k values to be} <br/> 
-    This doesn't work because it's saying that the max value is k if $a$ is 1 and $b$ is 1
-    <li> ${\sum_{k=1}^{100}} k \cdot \frac{k(k-1)}{100^{2}}$ <br/> 
-    This equation says, \enquote{a can be any value from 1 to k and b can be any value from 1 to k-1} <br/> 
-    This doesn't work because it's saying that the max value is k if $a$ is $k-1$ and $b$ is $k-2$
-    <li> ${\sum_{k=1}^{100}} k \cdot \frac{2k}{100^{2}}$ <br/> 
-    This equation says, \enquote{a can be any value from 1 to k and b can be any value from 1 to k} <br/> 
-    This doesn't work because it's saying that the max value is k if $a$ is 1 and $b$ is 1
-    <li> ${\sum_{k=1}^{100}} k \cdot bigg( \frac{1+2(k-1)}{100^{2}}bigg)$ <br/> 
-    This one actually has multiple possibilities <br/> 
-    <ul>
-        <li> $a = k$ and $b = k$: 1 possibility
-        <li> $a = k$ and $b$ is any value less than k: $k(k-1)$ possibilities
-        <li> $a$ is any value less than k and $b = k$: $(k-1)k$ possibilities
-    </ul>
-    Summing them up, we get $1 + 2 \cdot k(k-1) $ 
-    Each of the tree posibilities above makes sure that the max value is k
-</ul>
+We want to calculate the **expected value** of the random variable: $X = \max(a, b)$ where:
+
+- $ a $ and $ b $ are chosen independently and uniformly from the set $ \{1, 2, \ldots, 100\} $.
+
+---
+
+## **Key Observation**
+
+The maximum of two independent uniformly random variables, $ a $ and $ b $, takes the value $ k $ if:
+
+- At least one of the two numbers is equal to $ k $.
+- The other number is **less than or equal to $ k $**.
+
+### **Probability that $ X = k $**
+
+For a maximum of $ k $ to occur:
+
+1. At least one of $ a $ or $ b $ must be equal to $ k $.
+2. The other value must be $ \leq k $.
+
+The total number of outcomes for $ (a, b) $ is: $100^2$ since $ a $ and $ b $ are chosen from $ \{1, 2, \ldots, 100\}$.
+
+The favorable outcomes for $ X = k $ are:
+
+- $ a = k $ and $ b \leq k $: $ k $ outcomes.
+- $ b = k $ and $ a \leq k $: $ k $ outcomes.
+- $ a = b = k $ is counted twice, so subtract 1.
+
+Total favorable outcomes: $2k - 1$
+
+This means the probability that $ X = k $ is: $P(X = k) = \frac{|X = k|}{|S|} = \frac{2k - 1}{100^2}$.
+
+---
+
+## **Substituting Expected Value Formula**
+
+By the definition of expected value: $E(X) = \sum\_{k=1}^{100} k \cdot P(X = k)$
+
+Substituting the probability: $E(X) = \sum\_{k=1}^{100} k \cdot \frac{2k - 1}{100^2}$
+
+We can rewrite $2k-1$ as $1 + 2(k-1)$. They result in the same sum, so we get: $E(X) = \sum\_{k=1}^{100} k \cdot \left(\frac{1 + 2(k-1)}{100^2}\right)$

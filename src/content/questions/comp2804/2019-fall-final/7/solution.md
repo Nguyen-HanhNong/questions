@@ -1,23 +1,7 @@
-Yeah, so this is the dividers method. Let's define some stuff I guess
+Given the fact that we all have multiple unknown variables that we need to solve for that will all have to sum to a specific numbers, we can use the formula from "Counting Solutions of Linear Equations" or Chapter 3.9.2 in the textbook to solve this problem: $\binom{n+k-1}{k-1}$
 
-Let $x_1, x_2, x_3, x_4, x_5, x_6, x_7$ be the number of bananas Nick eats on each day
+Let $x_1, x_2, x_3, x_4, x_5, x_6, x_7$ be the number of bananas Nick eats on each day: $x_1 + x_2 + x_3 + x_4 + x_5 + x_6 + x_7 = 25$
 
-Now, $x_1 + x_2 + x_3 + x_4 + x_5 + x_6 + x_7 = 25$
+In this case, let $n$ represent the number of bananas Nick eats and $k$ represent the number of days/number of unknown variables. Therefore, $n = 25$ and $k = 7$. Now we can invoke the formula to solve for the number of solutions:
 
-Assuming you have a sea of bananas, let's put dividers to split them off into different days
-
-<ul>
-    <li> $x_1$ is the number of bananas to the left of the first divider
-    <li> $x_2$ is the number of bananas between the first and second divider
-    <li> $x_3$ is the number of bananas between the second and third divider
-    <li> $x_4$ is the number of bananas between the third and fourth divider
-    <li> $x_5$ is the number of bananas between the fourth and fifth divider
-    <li> $x_6$ is the number of bananas between the fifth and sixth divider
-    <li> $x_7$ is the number of bananas to the right of the sixth divider
-</ul>
-
-Now, we have 6 dividers and 25 bananas, so we have 31 objects in total
-
-Since each object has a position, we can just move the dividers around to change any x.
-
-We choose 6 spots out of the 31 to be dividers: $ \binom{31}{6} $
+$\binom{25+7-1}{7-1} = \binom{31}{6}$

@@ -1,33 +1,43 @@
-ngl, I have no idea how the right answer is the right answer. Let's just do this and let the math take us to heaven or hell
+## **Define an Indicator Random Variable**
 
-Since they're standing in a cirlce, the last person has the first person to their right. That means we consider every single person
+For each friend $ i $ (where $ i = 1, 2, \ldots, n $):
 
-<ul>
-	<li> Let S be the set of all possible coin tosses for $p_i$ and his/her neighbours <br/>
-	$ |S| = 2^3 = 8 $
-	<li> Let A be the event that $p_i$ says Huzzah when they get a head
-	$p_i$ gets a head: 1 <br/>
-	$p_{i-1}$ must get a tail: 1 <br/>
-	$p_{i+1}$ must get a tail: 1 <br/>
-	$ |A| = 1 $ <br/>
-	$ \Pr(A) = \frac{1}{8} $
-	<li> Let B be the event that $p_i$ says Huzzah when they get a tail <br/>
-	$p_i$ gets a tail: 1 <br/>
-	$p_{i-1}$ must get a head: 1 <br/>
-	$p_{i+1}$ must get a head: 1 <br/>
-	$ |B| = 1 $ <br/>
-	$ \Pr(B) = \frac{1}{8} $
-	<li> A and B are mutually exclusive, so let's just calculate their union<br/>
-	$ \Pr(A \cup B) = \Pr(A) + \Pr(B) $ <br/>
-	$ \Pr(A \cup B) = \frac{1}{8} + \frac{1}{8} $ <br/>
-	$ \Pr(A \cup B) = \frac{2}{8} $ <br/>
-	$ \Pr(A \cup B) = \frac{1}{4} $
-</ul>
+- Define an indicator random variable $ X_i $ such that: $X_i =$
+  - $1 \text{ if friend $ i $ shouts "Huzzah!"}$
+  - $0 \text{ otherwise}$
 
-$E(X) = \sum\_{i=1}^{n} 1 \cdot \Pr(A \cup B) $
+The total number of friends who shout "Huzzah!" can be expressed as: $X = \sum\_{i=1}^{n} X_i$. The expected value of $X$ is $E(X) = E(\sum\_{i=1}^{n} X_i)$.
 
-$E(X) = n \cdot \Pr(A \cup B) $
+Using the **linearity of expectation**, we can simplify the expected value to the following: $E(X) = \sum\_{i=1}^{n} E(X_i)$
 
-$E(X) = n \cdot \frac{1}{4} $
+Since each friend has the same probability of shouting "Huzzah!" (by symmetry), we know: $E(X) = n \cdot E(X_1)$
 
-$E(X) = \frac{n}{4} $
+Our task now reduces to finding $ E(X_1) $, the probability that a given friend shouts "Huzzah!".
+
+---
+
+## **Probability of Shouting "Huzzah!"**
+
+A friend shouts "Huzzah!" if:
+
+1. Their coin flip is different from their **left neighbor's flip**.
+2. Their coin flip is different from their **right neighbor's flip**.
+
+For three coin flips (Left Player, Current Player, Right Player), the probability distributions are:
+
+- There are $ 2^3 = 8 $ possible outcomes for these three flips.
+- Out of these, only **2 outcomes** satisfy the "Huzzah!" condition:
+  - **HTH**
+  - **THT**
+
+So the probability is: $P(X_1 = 1) = \frac{2}{8} = \frac{1}{4}$
+
+Thus: $E(X_1) = \frac{1}{4}$
+
+---
+
+## **Step 3: Substitute into the Expectation Formula**
+
+Substituting into the linearity formula we calculated above:
+
+$E(X) = n \cdot E(X_1) = n \cdot \frac{1}{4} = \frac{n}{4}$

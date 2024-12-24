@@ -1,15 +1,9 @@
-Although all the answers in the question look really yucky, I feel like by explaining conceptually what the answer represents (and therefore how to get there), it should make more sense.
-
 To find the expected value of the max of 3 numbers, we first need to know what is the range of possible values for Z. Since the smallest number in the set is 1 and the largest is 50, that means the range of values is: $1 - 50$.
 
-Let $Z_i$ represent the random variable where:
+Let $Z_i$ represent the random variable where $Z_i$ is:
 
-$ Z_i =
-\begin{cases}
-1 & max\{X_1, X_2, X_3\} = i  
-0 & \text{otherwise.} \enspace
-\end{cases}
-$
+- $1$ if max \{$X_1, X_2, X_3$\} $= i$
+- $0$ otherwise
 
 Using the linearity of expectation, we just need to find out the expected value of $Z_i$, or $Pr(Z_i = i)$.
 

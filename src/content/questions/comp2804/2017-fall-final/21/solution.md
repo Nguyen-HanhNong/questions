@@ -1,25 +1,65 @@
-Before drawing a tree, let's think for a second
+## **Counterexample to Show $ X $ and $ Y $ Are Not Independent**
 
-We just need to prove whether the following is true for some value $x$ and $y$: $ Pr(X=i \cap Y=j) = Pr(X=i) \cdot Pr(Y=j) $
+We want to demonstrate mathematically that the random variables:
 
-Let's do it for X=2 and Y=2
+- $ X = i + j $ (sum of two six-sided dice rolls)
+- $ Y = i - j $ (difference between two six-sided dice rolls)
 
-$ |S| = 36 $
+are **not independent** by showing an example where the independence condition $P(X = x \land Y = y) = P(X = x) \cdot P(Y = y)$ **fails** for certain values of $ x $ and $ y $.
 
-$X=2$ for the pair $ (1,1) $
+---
 
-$ Pr(X=2) = \frac{1}{36} $
+## **Choose Specific Values**
 
-$Y=5$ for the pairs $ (6,1), (1,6) $
+Let:
 
-$ Pr(Y=5) = \frac{2}{36} $
+- $ X = 4 $ (sum of the two dice is 4)
+- $ Y = 2 $ (difference between the two dice is 2)
 
-Now, let's find the case of $ X=2 \cap Y=5 $
+We will compute:
 
-When we look at overlapping pairs in $X=2$ and $Y=5$, we see that there is no intersection
+1. $ P(X = 4 \land Y = 2) $
+2. $ P(X = 4) $
+3. $ P(Y = 2) $
+4. Check if the independence formula holds.
 
-This means that $ Pr(X=2 \cap Y=5) = 0 $
+---
 
-$ Pr(X=2 \cap Y=5) = Pr(X=2) \cdot Pr(Y=5) $
+## **Joint Probability $ P(X = 4 \land Y = 2) $**
 
-Since the equation is false, X and Y are not independent.
+For $ X = 4 $ and $ Y = 2 $:
+
+- The sum $ i + j = 4 $
+- The difference $ i - j = 2 $
+
+Possible pairs $(i, j)$ that satisfy both conditions: $ (3,1) $
+
+There is **1 valid outcome** out of $ 36 $ total outcomes, so $P(X = 4 \land Y = 2) = \frac{1}{36}$
+
+---
+
+## **Marginal Probability $ P(X = 4) $**
+
+Possible pairs where the sum is 4: $ (1,3), (2,2), (3,1) $
+
+There are **3 valid outcomes** out of $36$ total outcomes, so $P(X = 4) = \frac{3}{36} = \frac{1}{12}$
+
+---
+
+## **Marginal Probability $ P(Y = 2) $**
+
+Possible pairs where the difference is 2: $ (3,1), (4,2), (5,3), (6,4) $
+
+There are **4 outcomes** out of $36$ total outcomes, so $P(Y = 2) = \frac{4}{36} = \frac{1}{9}$
+
+## **Check Independence Condition**
+
+If $ X $ and $ Y $ were independent, we would expect: $P(X = 4 \land Y = 2) = P(X = 4) \cdot P(Y = 2)$
+
+Substituting the probabilities: $\frac{1}{36} \stackrel{?}{=} \frac{1}{12} \cdot \frac{1}{9}$
+
+Simplify the right-hand side: $\frac{1}{12} \cdot \frac{1}{9} = \frac{1}{108}$
+
+Comparing the two probabilities: $\frac{1}{36} \neq \frac{1}{108}$
+
+Clearly, the probabilities **do not match**, which means that the random variables $ X $ and $ Y $ are **not independent**.
